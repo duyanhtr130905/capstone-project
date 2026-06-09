@@ -1,0 +1,38 @@
+Network: Sepolia
+Deploy date: 2026-06-06
+Deployment ID: staking-sepolia-v1
+Deployer: 0xBdE29b2fe1B0CD9b0d134D2690D14f787Fc8A985
+
+StakingToken (MockERC20):  0x69F9e365D78dCB684DDe29ea6A05854273917db8
+RewardsToken (MockERC20):  0x20bF1B78E8B13B3273a27979725Faf1B74902e07
+StakingRewards:            0x8B30864bEF5B75C39D19Af249D6bbC4210B55963
+
+Block number at deploy:
+RewardsToken:              11001025
+StakingToken:              11001025
+StakingRewards:            11001030
+
+Transaction hash:
+RewardsToken:              0x8a916f0704f4f32ce33973a2afbd2f28a0cf32671b69013b686c83e3d3b44211
+StakingToken:              0x6a836db22a371b0e3f8c61d4674d8f84483d65b61925c7bf53fe84c56d7260cf
+StakingRewards:            0x3fb42856fb9d51fde40e74af2b13a84adf8608c973ab49c4bb4c38798c60693b
+
+Post-deploy demo:
+Reward pool funded:        1000 RWD
+Demo stake amount:         10 STK
+Total staked after demo:   10 STK
+Reward rate:               1653439153439153
+Final deployer balance:    0.088471631297227132 ETH
+
+Verification:
+Etherscan RewardsToken:    https://sepolia.etherscan.io/address/0x20bF1B78E8B13B3273a27979725Faf1B74902e07#code
+Etherscan StakingToken:    https://sepolia.etherscan.io/address/0x69F9e365D78dCB684DDe29ea6A05854273917db8#code
+Etherscan StakingRewards:  https://sepolia.etherscan.io/address/0x8B30864bEF5B75C39D19Af249D6bbC4210B55963#code
+
+Blockscout RewardsToken:   https://eth-sepolia.blockscout.com/address/0x20bF1B78E8B13B3273a27979725Faf1B74902e07#code
+Blockscout StakingToken:   https://eth-sepolia.blockscout.com/address/0x69F9e365D78dCB684DDe29ea6A05854273917db8#code
+Blockscout StakingRewards: https://eth-sepolia.blockscout.com/address/0x8B30864bEF5B75C39D19Af249D6bbC4210B55963#code
+
+Sourcify RewardsToken:     https://sourcify.dev/server/repo-ui/11155111/0x20bF1B78E8B13B3273a27979725Faf1B74902e07
+Sourcify StakingToken:     https://sourcify.dev/server/repo-ui/11155111/0x69F9e365D78dCB684DDe29ea6A05854273917db8
+Sourcify StakingRewards:   https://sourcify.dev/server/repo-ui/11155111/0x8B30864bEF5B75C39D19Af249D6bbC4210B55963

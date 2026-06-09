@@ -1,0 +1,14 @@
+node_modules/
+.env
+artifacts/
+cache/
+typechain-types/
+types/
+ignition/deployments/
+coverage/
+coverage.json
+*.log
+*.err
+dist/
+stitch-export/
+*.zip
