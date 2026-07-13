@@ -21,7 +21,6 @@
 12. [Phase 8 — Verify trên Etherscan](#12-phase-8--verify-trên-etherscan)
 13. [Phase 9 — Demo và báo cáo](#13-phase-9--demo-và-báo-cáo)
 14. [Checklist nộp bài](#14-checklist-nộp-bài)
-15. [Prompt mẫu cho AI](#15-prompt-mẫu-cho-ai)
 
 ---
 
@@ -310,12 +309,6 @@ typechain-types/
 ignition/deployments/
 ```
 
-### Prompt AI cho Phase 1
-
-> "Tôi đang setup Hardhat project cho Staking Contract capstone.
-> Hãy kiểm tra file `hardhat.config.ts` của tôi và cho biết có thiếu cấu hình nào không.
-> Đây là nội dung: [paste nội dung file]"
-
 ---
 
 ## 6. Phase 2 — Viết contract Layer 1 (Core)
@@ -433,16 +426,6 @@ contract StakingRewards is Ownable, ReentrancyGuard, Pausable {
 npx hardhat compile
 # Kết quả mong đợi: Compiled 2 Solidity files successfully
 ```
-
-### Prompt AI cho Phase 2
-
-> "Đây là Layer 1 của StakingRewards contract của tôi: [paste code].
-> Hãy review và cho biết:
-> 1. Có vi phạm CEI pattern (check-effects-interactions) ở đâu không?
-> 2. Có thiếu validation nào quan trọng không?
-> 3. Custom error đã viết đúng cú pháp Solidity 0.8.20 chưa?
-> Chưa cần thêm reward logic — tôi sẽ làm ở bước tiếp theo."
-
 ---
 
 ## 7. Phase 3 — Viết contract Layer 2 (Reward Engine)
@@ -571,19 +554,6 @@ Nếu compile thành công, viết test nhanh để verify math:
 npx hardhat test --grep "reward calculation"
 ```
 
-### Prompt AI cho Phase 3
-
-> "Tôi vừa thêm Reward Engine vào StakingRewards contract theo Accumulator Pattern.
-> Đây là toàn bộ code hiện tại: [paste code].
->
-> Hãy verify:
-> 1. Công thức trong `rewardPerToken()` có đúng không? Đặc biệt là phép nhân với 1e18.
-> 2. `updateReward` modifier có được gọi đúng thứ tự (trước khi balance thay đổi) không?
-> 3. Có edge case nào khi `totalStaked == 0` chưa được xử lý không?
-> 4. Công thức `earned()` có thể bị integer overflow không với Solidity 0.8.20?"
-
----
-
 ## 8. Phase 4 — Viết contract Layer 3 (Security + Admin)
 
 ### Mục tiêu
@@ -646,17 +616,6 @@ function recoverERC20(address tokenAddress, uint256 tokenAmount)
 }
 ```
 
-### Prompt AI cho Phase 4
-
-> "Tôi đã thêm Layer 3 (Security + Admin) vào contract. Đây là toàn bộ file hoàn chỉnh: [paste code].
->
-> Hãy làm full security review:
-> 1. Tất cả hàm có token transfer có dùng `nonReentrant` không?
-> 2. `notifyRewardAmount` — logic cộng dồn reward khi còn trong chu kỳ cũ có đúng không?
-> 3. `recoverERC20` — có cần block thêm `rewardsToken` trong trường hợp staking token == rewards token không?
-> 4. Có hàm nào thiếu `onlyOwner` mà lẽ ra phải có không?
-> 5. Kiểm tra tất cả custom error — có error nào được khai báo nhưng không dùng không?"
-
 ---
 
 ## 9. Phase 5 — Tích hợp và hoàn thiện contract
@@ -697,17 +656,6 @@ npx hardhat compile
 # Đọc bytecode size (nên < 24KB để tránh lỗi deploy)
 npx hardhat size-contracts
 ```
-
-### Prompt AI cho Phase 5
-
-> "Đây là file StakingRewards.sol hoàn chỉnh của tôi sau khi ghép 3 layer: [paste toàn bộ file].
->
-> Hãy làm final review:
-> 1. Kiểm tra thứ tự các hàm có theo Solidity convention không
-> 2. Có state variable nào thiếu visibility modifier không
-> 3. NatSpec comment — thêm @notice và @param cho các hàm public chính
-> 4. Có code nào duplicate hoặc có thể refactor gọn hơn không
-> 5. Đề xuất gas optimization nếu có (nhưng không làm giảm readability)"
 
 ---
 
@@ -928,16 +876,6 @@ StakingRewards
 9 passing (2s)
 ```
 
-### Prompt AI cho Phase 6
-
-> "Đây là file test của tôi: [paste code].
-> Một số test đang fail với lỗi: [paste lỗi].
->
-> Hãy debug và giải thích:
-> 1. Tại sao `earned()` trong Scenario 1 không khớp với expected value?
-> 2. `time.increase()` trong hardhat-network-helpers hoạt động như thế nào — nó mine block mới không?
-> 3. Tại sao cần tolerance thay vì expect chính xác?"
-
 ---
 
 ## 11. Phase 7 — Deploy lên testnet
@@ -1050,16 +988,6 @@ main().catch(console.error);
 ```bash
 npx hardhat run scripts/interact.ts --network sepolia
 ```
-
-### Prompt AI cho Phase 7
-
-> "Deploy thành công nhưng gặp lỗi khi gọi `notifyRewardAmount` sau deploy:
-> [paste lỗi]. Contract address là: [address]. Đây là transaction hash: [hash].
->
-> Hãy phân tích:
-> 1. Lỗi này thường do nguyên nhân gì trong staking contract?
-> 2. Cần kiểm tra điều kiện gì trước khi gọi `notifyRewardAmount`?
-> 3. Cách debug bằng cách đọc state variables từ Etherscan?"
 
 ---
 
@@ -1176,7 +1104,7 @@ STAKING CONTRACT — CAPSTONE PROJECT
 ### Theo yêu cầu bắt buộc
 
 - [ ] Source code contract (file `.sol`)
-  - [ ] `contracts/StakingRewards.sol`
+  - [x] `contracts/StakingRewards.sol`
   - [ ] `contracts/mocks/MockERC20.sol`
 - [ ] Địa chỉ contract trên testnet (Sepolia)
   - [ ] StakingToken: `0x...`
@@ -1185,105 +1113,4 @@ STAKING CONTRACT — CAPSTONE PROJECT
 - [ ] Link verify Etherscan — cả 3 contract đều có icon ✓
 - [ ] Video demo (max 10 phút)
 - [ ] Tài liệu mô tả (1 trang PDF)
-
-### Thêm để bứt lên
-
-- [ ] File `test/StakingRewards.test.ts` với 9 test cases pass
-- [ ] `README.md` hướng dẫn setup và chạy local
-- [ ] GitHub repository public với commit history rõ ràng
-- [ ] NatSpec comment trong contract (hàm public)
-- [ ] Script `scripts/interact.ts` demo tương tác với contract
-
 ---
-
-## 15. Prompt mẫu cho AI
-
-Sử dụng các prompt này khi làm việc với AI ở từng giai đoạn.
-Nguyên tắc: luôn paste code hiện tại + mô tả vấn đề cụ thể.
-
-### Prompt khởi động project
-
-```
-Tôi đang làm Capstone Project: Staking Contract ERC20 với Reward Engine.
-Tech stack: Hardhat + Solidity 0.8.20 + OpenZeppelin v5 + TypeScript.
-
-Kiến trúc gồm 3 layer:
-- Layer 1: stake(), unstake(), state cơ bản
-- Layer 2: Accumulator Pattern (rewardPerToken, earned, claimReward)
-- Layer 3: Ownable, Pausable, ReentrancyGuard, notifyRewardAmount
-
-Tôi sẽ làm từng layer một. Hãy bắt đầu với Layer 1:
-viết skeleton contract với đầy đủ imports, state variables,
-và 2 hàm stake() + unstake() theo CEI pattern.
-Chưa cần reward logic.
-```
-
-### Prompt review code
-
-```
-Đây là [Layer X] của StakingRewards contract: [paste code]
-
-Hãy review theo thứ tự:
-1. Correctness — logic có đúng không?
-2. Security — có lỗ hổng nào không?
-3. Gas — có chỗ nào tốn gas không cần thiết không?
-4. Style — có vi phạm Solidity convention không?
-
-Chỉ comment những vấn đề thực sự quan trọng.
-Không đề xuất thêm tính năng ngoài scope.
-```
-
-### Prompt debug test
-
-```
-Test case này đang fail:
-[paste test case]
-
-Lỗi:
-[paste error message]
-
-Contract hiện tại:
-[paste code]
-
-Hardhat version: [version]
-Ethers.js version: [version]
-
-Hãy giải thích nguyên nhân và cách fix.
-```
-
-### Prompt debug deploy
-
-```
-Deploy lên Sepolia bị lỗi:
-[paste lỗi]
-
-hardhat.config.ts của tôi:
-[paste config]
-
-Package.json dependencies:
-[paste dependencies]
-
-Hãy chỉ ra nguyên nhân và cách fix.
-```
-
-### Prompt tích hợp code từ nhiều nguồn
-
-```
-Tôi có 2 phiên bản code cho cùng 1 contract, muốn ghép lại:
-
-Phiên bản A (Layer 1 + 2): [paste]
-Phiên bản B (Layer 3): [paste]
-
-Yêu cầu khi ghép:
-- Giữ nguyên tất cả logic
-- Đảm bảo không có import trùng
-- Đảm bảo thứ tự kế thừa đúng: Ownable, ReentrancyGuard, Pausable
-- modifier updateReward phải chạy TRƯỚC nonReentrant
-
-Hãy output file hoàn chỉnh đã ghép.
-```
-
----
-
-*Blueprint này được thiết kế để làm từng phase theo thứ tự.
-Mỗi phase có thể làm việc độc lập với AI — chỉ cần paste code hiện tại và mô tả vấn đề cụ thể.*
