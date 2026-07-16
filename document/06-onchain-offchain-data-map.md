@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Mã tài liệu** | ARCH-DM-002 |
+| **Mã tài liệu** | ARCH-DM-006 |
 | **Phiên bản** | 1.0 |
 | **Trạng thái** | Rà soát nội bộ |
 | **Đối tượng mô tả** | `contracts/StakingRewards.sol` + `frontend/src/App.tsx` |

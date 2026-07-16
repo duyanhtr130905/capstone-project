@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Mã tài liệu** | OPS-RB-004 |
+| **Mã tài liệu** | OPS-RB-008 |
 | **Phiên bản** | 1.0 |
 | **Trạng thái** | Áp dụng nội bộ |
 | **Đối tượng áp dụng** | Triển khai `contracts/StakingRewards.sol` lên mạng Ethereum (Testnet/Mainnet) |
@@ -112,7 +112,7 @@ Build lại frontend với địa chỉ contract mới (`npm run build` trong th
 
 Khác với triển khai phần mềm truyền thống, **không tồn tại thao tác "rollback" một khi contract đã deploy**. Nếu phát hiện lỗi nghiêm trọng sau khi deploy:
 
-1. Gọi `pause()` ngay lập tức để chặn `stake()`/`unstake()` mới (không chặn được `claimReward()` theo thiết kế — xem `01-threat-model.md`).
+1. Gọi `pause()` ngay lập tức để chặn `stake()`/`unstake()` mới (không chặn được `claimReward()` theo thiết kế — xem `05-threat-model.md`).
 2. Thông báo cho toàn bộ người dùng liên quan.
 3. Deploy một **contract hoàn toàn mới** với bản vá, không phải "sửa" contract cũ.
 4. Xây dựng quy trình di chuyển dữ liệu (migration) thủ công nếu cần chuyển trạng thái người dùng sang contract mới — hiện tại chưa có cơ chế migration tự động trong hệ thống.
@@ -121,8 +121,8 @@ Khác với triển khai phần mềm truyền thống, **không tồn tại tha
 
 Runbook này được xây dựng cho môi trường Testnet. Nếu triển khai lên Mainnet với tài sản có giá trị thật, bổ sung bắt buộc trước Bước 5:
 
-- Hoàn tất audit bởi bên thứ ba (xem khuyến nghị P3 trong `01-threat-model.md`).
-- Chuyển quyền `owner` sang ví multisig thay vì private key đơn lẻ (xem `05-operational-runbook.md`).
+- Hoàn tất audit bởi bên thứ ba (xem khuyến nghị P3 trong `05-threat-model.md`).
+- Chuyển quyền `owner` sang ví multisig thay vì private key đơn lẻ (xem `09-operational-runbook.md`).
 - Chạy thử toàn bộ quy trình 10 bước trên một mạng testnet có điều kiện gần giống mainnet nhất trước khi thực hiện thật.
 
 ---

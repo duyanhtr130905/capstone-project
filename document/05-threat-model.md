@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Mã tài liệu** | SEC-TM-001 |
+| **Mã tài liệu** | SEC-TM-005 |
 | **Phiên bản** | 1.0 |
 | **Trạng thái** | Rà soát nội bộ |
 | **Đối tượng đánh giá** | `contracts/StakingRewards.sol` (triển khai trên Sepolia Testnet) |
@@ -27,7 +27,7 @@ Tài liệu này xác định các mối đe dọa bảo mật áp dụng cho sm
 **Ngoài phạm vi:**
 - Bảo mật tầng ví (browser extension, cách quản lý private key)
 - Độ tin cậy của nhà cung cấp RPC bên thứ ba
-- Bảo mật ứng dụng frontend (xem tài liệu riêng: `03-onchain-offchain-data-map.md`)
+- Bảo mật ứng dụng frontend (xem tài liệu riêng: `06-onchain-offchain-data-map.md`)
 
 **Phương pháp:** Rà soát mã nguồn thủ công, đối chiếu với bộ test tự động (`test/StakingRewards.test.ts`, 16 test case). Các mối đe dọa được liệt kê theo khung phân loại rủi ro tiêu chuẩn cho smart contract (reentrancy, kiểm soát truy cập, thao túng kinh tế, lỗi số học, rủi ro liên quan tới tính bất biến). Mỗi phát hiện ghi nhận: vector tấn công, thành phần bị ảnh hưởng, biện pháp phòng chống hiện có, mức rủi ro còn lại, và tình trạng bao phủ test.
 
@@ -112,7 +112,7 @@ Contract nắm giữ 2 loại tài sản ERC20 (`stakingToken`, `rewardsToken`) 
 
 - Bảo mật của browser extension / môi trường trình duyệt chứa ví.
 - Độ tin cậy hoặc tính sẵn sàng của nhà cung cấp RPC bên thứ ba (`publicnode.com`, `thirdweb.com`).
-- Mô hình quản lý quyền `owner` bằng 1 private key duy nhất (EOA — Externally Owned Account), không có multisig hay timelock. Đây là rủi ro vận hành đã được ghi nhận, xử lý ở tầng quy trình trong tài liệu `05-operational-runbook.md`, không phải ở tầng contract.
+- Mô hình quản lý quyền `owner` bằng 1 private key duy nhất (EOA — Externally Owned Account), không có multisig hay timelock. Đây là rủi ro vận hành đã được ghi nhận, xử lý ở tầng quy trình trong tài liệu `09-operational-runbook.md`, không phải ở tầng contract.
 - Tài liệu này **không phải** một cuộc audit được chứng nhận bởi bên thứ ba, và không nên được trình bày như vậy trong bất kỳ tài liệu nào hướng ra bên ngoài.
 
 ## 7. Khuyến nghị
@@ -125,4 +125,4 @@ Contract nắm giữ 2 loại tài sản ERC20 (`stakingToken`, `rewardsToken`) 
 | P3 | Thuê audit độc lập bởi bên thứ ba trước khi triển khai mainnet | Rà soát nội bộ này chưa đạt tiêu chuẩn đảm bảo cho mainnet |
 
 ---
-*Tham chiếu chéo: chi tiết triển khai các biện pháp phòng chống tương ứng với các dòng mã trong `contracts/StakingRewards.sol`, đã được rà soát trong báo cáo kỹ thuật capstone đi kèm (`report/staking-contract-capstone-report.md`).*
+*Tham chiếu chéo: chi tiết triển khai các biện pháp phòng chống tương ứng với từng hàm trong `02-smart-contract-functional-spec.md` và các dòng mã trong `contracts/StakingRewards.sol`.*

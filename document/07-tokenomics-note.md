@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Mã tài liệu** | ECON-TN-003 |
+| **Mã tài liệu** | ECON-TN-007 |
 | **Phiên bản** | 1.0 |
 | **Trạng thái** | Rà soát nội bộ |
 | **Đối tượng mô tả** | Cơ chế phát thưởng của `contracts/StakingRewards.sol` |
